@@ -16,7 +16,7 @@ from bokeh.resources import CDN
 from bokeh.embed import file_html, components
 from flask import Flask, render_template, request, redirect
 
-app_bosuchoi = Flask(__name__)
+app = Flask(__name__)
 
 def get_plot(val1, val2):
     
@@ -51,11 +51,11 @@ def get_plot(val1, val2):
     #return html
     return p
 
-@app_bosuchoi.route('/')
+@app.route('/')
 def index():
     return render_template('input.html')
 
-@app_bosuchoi.route('/', methods = ['POST'])
+@app.route('/', methods = ['POST'])
 def getvalue():
     Ticker = request.form['ticker']
     Request = request.form['features']
@@ -73,5 +73,5 @@ def getvalue():
     #return json.dumps(json_item(p,"myplot"))
     
 if __name__ == '__main__':
-    app_bosuchoi.run(port=33507)
+    app.run(port=33507)
     
