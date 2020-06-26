@@ -4,7 +4,7 @@ Created on Wed Jun 24 16:16:28 2020
 
 @author: choibosu
 """
-import simplejson as json
+import json as json
 import requests
 import pandas as pd
 import numpy as np
