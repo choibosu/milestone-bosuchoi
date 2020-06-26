@@ -57,20 +57,18 @@ def index():
 
 @app.route('/', methods = ['POST'])
 def getvalue():
+    global result_plot
     Ticker = request.form['ticker']
     Request = request.form['features']
-    output = get_plot(Ticker, Request)
+    result_plot = get_plot(Ticker, Request)
     
-    script, div = components(output)
+    return redirect(url_for('output'))
+
+@app.route('/output')
+def output():
+    x = result_plot
+    script, div = components(x)
     return render_template('output.html', script=script, div=div)
-    
-    #html_file = open("output.html", "w")
-    #html_file.write(output)
-    #html_file.close()
-    #return render_template('output.html')
-    
-    #return render_template(output)
-    #return json.dumps(json_item(p,"myplot"))
     
 if __name__ == '__main__':
     app.run(port=33507)
