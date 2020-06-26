@@ -64,7 +64,7 @@ def getvalue():
     
     return redirect(url_for('output'))
 
-@app.route('/output', = ['POST'])
+@app.route('/output', methods = ['POST'])
 def output():
     x = result_plot
     script, div = components(x)
