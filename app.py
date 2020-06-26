@@ -14,7 +14,7 @@ from bokeh.models import ColumnDataSource
 from bokeh.models import DatetimeTickFormatter
 from bokeh.resources import CDN
 from bokeh.embed import file_html, components
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
 
