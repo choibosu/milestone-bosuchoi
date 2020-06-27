@@ -55,19 +55,23 @@ def get_plot(val1, val2):
 def index():
     return render_template('input.html')
 
-@app.route('/', methods = ['POST'])
-def getvalue():
-    global result_plot
-    Ticker = request.form['ticker']
-    Request = request.form['features']
-    result_plot = get_plot(Ticker, Request)
+#@app.route('/', methods = ['POST'])
+#def getvalue():
+#    global result_plot
+#    Ticker = request.form['ticker']
+#    Request = request.form['features']
+#    result_plot = get_plot(Ticker, Request)
     
-    return redirect(url_for('output'))
+#    return redirect(url_for('output'))
 
 @app.route('/output', methods = ['POST'])
 def output():
-    x = result_plot
-    script, div = components(x)
+    #x = result_plot
+    
+    Ticker = request.form['ticker']
+    Request = request.form['features']
+    result_plot = get_plot(Ticker, Request)
+    script, div = components(result_plot)
     return render_template('output.html', script=script, div=div)
     
 if __name__ == '__main__':
